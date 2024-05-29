@@ -14,7 +14,10 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "gsap": "^3.12.5",
+    "lenis": "^1.0.45",
     "pinia": "^2.1.7",
+    "split-type": "^0.3.4",
     "vue": "^3.4.21"
   },
   "devDependencies": {
