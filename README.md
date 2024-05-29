@@ -1,35 +1,17 @@
-# Portfolio
+<div align = "center">
+  <h1>My Portfolio</h1>
+</div>
 
-This template should help get you started developing with Vue 3 in Vite.
+<div align = "center">
+<h5 align = "center">Build with</h5>
+<img align="center" alt="Vue" width="40px" style="padding-right:20px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original-wordmark.svg" />
+</div>
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## Running the Project
 
 ```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+npm install     // Setup Project
+npm run dev     // Compile and Hot-Reload for development
+npm run build   // Compile and Minify for Production
+npm run lint    // Lint
 ```
