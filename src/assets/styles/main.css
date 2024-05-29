@@ -1,0 +1,28 @@
+@import url('./colors.css');
+@import url('./typography.css');
+
+/*===============
+    GLOBAL
+  ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  color: var(--text);
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: normal;
+}
+
+body {
+  background-color: var(--background);
+  min-width: 100vw;
+}
+
+button {
+  border: none;
+}
+
+#app {
+  min-width: 100vw;
+  min-height: 100vh;
+}
