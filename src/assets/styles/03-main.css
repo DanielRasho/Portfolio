@@ -1,5 +1,5 @@
-@import url('./colors.css');
-@import url('./typography.css');
+@import url('./01-colors.css');
+@import url('./02-typography.css');
 
 /*===============
     GLOBAL
@@ -9,12 +9,12 @@
   padding: 0;
   margin: 0;
   color: var(--text);
-  font-family: 'Lexend Deca', sans-serif;
+  font-family: 'CMU Bright', sans-serif;
   font-weight: normal;
 }
 
 body {
-  background-color: var(--background);
+  background-color: var(--white);
   min-width: 100vw;
 }
 
