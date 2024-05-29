@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Avigea';
+    src: url('../typography/Avigea.otf');
+}
+
+@font-face {
+    font-family: 'CMU Bright';
+    src: url('../typography/cmunbmr.ttf');
+}
+
+@font-face {
+    font-family: 'IBM Plex Mono';
+    src: url('../typography/IBMPlexMono-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Keystone';
+    src: url('../typography/Keystone-Regular.otf');
+}
