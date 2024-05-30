@@ -4,6 +4,11 @@
 /*===============
     GLOBAL
   ===============*/
+
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -11,11 +16,12 @@
   color: var(--text);
   font-family: 'CMU Bright', sans-serif;
   font-weight: normal;
+  color: var(--dark-green);
 }
 
 body {
-  background-color: var(--white);
   min-width: 100vw;
+  background-color: var(--white);
 }
 
 button {
@@ -25,4 +31,10 @@ button {
 #app {
   min-width: 100vw;
   min-height: 100vh;
+}
+
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
 }
