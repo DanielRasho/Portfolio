@@ -275,11 +275,11 @@ const navLinks = [
   }
 
   #abstract-section .dev-title {
-    transform: rotateZ(-90deg) translateY(-50%) translateX(-50%);
+    transform: rotateZ(-90deg) translateY(-50%);
     left: 20%;
   }
   #abstract-section .design-title {
-    transform: rotateZ(-90deg) translateY(50%) translateX(-50%);
+    transform: rotateZ(-90deg) translateY(50%);
     right: 20%;
   }
   #abstract-section .abstract-left .img-container,
