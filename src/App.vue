@@ -1,5 +1,4 @@
 <script setup>
-import AnimatedText from './components/AnimatedText/AnimatedText.vue'
 import SideBar from './components/SideBar/SideBar.vue'
 
 const navLinks = [
