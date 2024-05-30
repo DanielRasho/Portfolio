@@ -259,14 +259,13 @@ const navLinks = [
 @media only screen and (max-width: 900px) {
   #abstract-section .abstract-left,
   #abstract-section .abstract-right {
-    overflow: hidden;
     position: relative;
     width: 100%;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: visible;
   }
   #abstract-section .dev-title,
   #abstract-section .design-title {
@@ -287,6 +286,7 @@ const navLinks = [
     transform: translate(50%);
     width: 65%;
     height: auto;
+    overflow: visible;
   }
   #abstract-section .abstract-right .img-container {
     transform: translate(-50%);
