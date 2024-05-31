@@ -6,6 +6,7 @@ import HomeView from './views/HomeView.vue'
 import AbstractView from './views/AbstractView.vue'
 import ExperienceView from './views/ExperienceView.vue'
 import ProjectsView from './views/ProjectsView.vue'
+import KnowledgeView from './views/KnowledgeView.vue'
 
 const navLinks = [
   {
@@ -72,7 +73,6 @@ onMounted(() => {
       overlay.style.visibility = 'hidden'
     },
     onUpdate: (self) => {
-      console.log(self.progress.toFixed(1))
       if (self.progress.toFixed(1) == 0.0) {
         infoTrack.style = '--project-index:0;'
         imageTrack.style = '--project-index:0;'
@@ -94,9 +94,23 @@ onMounted(() => {
   <AbstractView />
   <ExperienceView />
   <ProjectsView />
+  <KnowledgeView />
 
-  <section id="knowledge-section"></section>
-  <section id="contacts-section"></section>
+  <footer id="contacts-section">
+    <div>
+      <div>PRINCIPAL</div>
+    </div>
+    <div>
+      <a href="">Linkedln <i class="fa-solid fa-paperclip"></i></a>
+      <a href="">Mail <i class="fa-solid fa-paperclip"></i></a>
+      <a href="">Github <i class="fa-solid fa-paperclip"></i></a>
+    </div>
+  </footer>
 </template>
 
-<style scoped></style>
+<style scoped>
+#contacts-section {
+  height: 30vh;
+  background-color: var(--dark-green);
+}
+</style>
