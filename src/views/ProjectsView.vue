@@ -120,39 +120,6 @@ import ImportantButton from '../components/ImportantButton/ImportantButton.vue'
   position: absolute;
 }
 
-@media only screen and (max-width: 1550px) {
-  #projects-section .pc-display {
-    top: 25%;
-    height: 28%;
-  }
-}
-@media only screen and (max-width: 1310px) {
-  #projects-section .pc-display {
-    top: 30%;
-    height: 25%;
-  }
-}
-@media only screen and (max-width: 1040px) {
-  #projects-section {
-    display: block;
-  }
-  #projects-section svg {
-    display: none;
-  }
-  #projects-section .project-images,
-  #projects-section .project-info {
-    width: 70%;
-    margin-left: 15%;
-    margin-right: 15%;
-  }
-
-  #projects-section .pc-display {
-    top: 10%;
-    width: 48%;
-    height: 50%;
-  }
-}
-
 #projects-section .carousel-track {
   display: flex;
   width: 100%;
@@ -211,11 +178,55 @@ import ImportantButton from '../components/ImportantButton/ImportantButton.vue'
   font-size: 1.4rem;
   margin-top: 2rem;
 }
+@media only screen and (max-width: 1550px) {
+  #projects-section .pc-display {
+    top: 25%;
+    height: 28%;
+  }
+}
+@media only screen and (max-width: 1310px) {
+  #projects-section .pc-display {
+    top: 30%;
+    height: 25%;
+  }
+}
+@media only screen and (max-width: 1040px) {
+  #projects-section {
+    display: block;
+  }
+  #projects-section svg {
+    display: none;
+  }
+  #projects-section .project-images,
+  #projects-section .project-info {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+  }
 
-#knowledge-section {
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  background-color: var(--white);
+  #projects-section .pc-display {
+    top: 22%;
+    width: 48%;
+    height: 40%;
+  }
+  #projects-section .project-title {
+    font-size: 3rem;
+  }
+
+  #projects-section .project-description {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+  }
+  #projects-section .project-images {
+    padding-top: 5rem;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  #projects-section .pc-display {
+    top: 28%;
+    width: 48%;
+    height: 40%;
+  }
 }
 </style>
