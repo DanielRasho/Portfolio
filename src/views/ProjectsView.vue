@@ -45,14 +45,15 @@
         </div>
         <div class="project-item">
           <div class="project-title">WireWiz</div>
-          <div class="project-description">A simulator for electrons flow through a wire.</div>
+          <div class="project-description">
+            A simulator for electrons flow through a wire. Made with Vue
+          </div>
           <ImportantButton text="Link to Code" href="https://github.com/DanielRasho/wireWiz" />
         </div>
         <div class="project-item">
           <div class="project-title">Brush Wire</div>
           <div class="project-description">
-            A particle launcher simulator. Where a charge is trown away from a charged object. All
-            based on the classic theory of electromagnetism.
+            A cool blog made for artist to share their knoledge. Made with React.
           </div>
           <a class="project-link"><span style="--content: 'Link to Code'">Link to Code</span></a>
           <ImportantButton text="Link to Code" href="https://github.com/DanielRasho/BrushWire" />
