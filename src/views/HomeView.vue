@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import HomeContainer from '@/components/HomeContainer/HomeContainer.vue'
+import HomeContainer from '@/components/HomeContainer.vue'
 import { computed, onMounted, ref, watch } from 'vue'
 import { coolDownFn } from '@/utils/CoolDown'
 import { getCursorRelativeCoordinates } from '@/utils/CursorCoordinates'

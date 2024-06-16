@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from 'vue'
-import SideBar from './components/SideBar/SideBar.vue'
+import SideBar from '@/components/SideBar.vue'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import HomeView from './views/HomeView.vue'
 import AbstractView from './views/AbstractView.vue'

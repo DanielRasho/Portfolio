@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import ImportantButton from '@/components/ImportantButton/ImportantButton.vue'
+import ImportantButton from '@/components/ImportantButton.vue'
 
 const props = defineProps({
   title: { type: String },

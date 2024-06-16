@@ -55,8 +55,8 @@
 </template>
 <script setup>
 import { computed, onMounted, ref } from 'vue'
-import ProjectItem from '@/components/ProjectItem/ProjectItem.vue'
-import ImportantButton from '@/components/ImportantButton/ImportantButton.vue'
+import ProjectItem from '@/components/ProjectItem.vue'
+import ImportantButton from '@/components/ImportantButton.vue'
 import { gsap } from 'gsap/gsap-core'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 

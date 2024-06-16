@@ -12,7 +12,7 @@
 </template>
 <script setup>
 import Draggable from 'gsap/Draggable'
-import PCWindow from '@/components/PCWindow/PCWindow.vue'
+import PCWindow from '@/components/PCWindow.vue'
 import { onMounted } from 'vue'
 
 const programming = [
