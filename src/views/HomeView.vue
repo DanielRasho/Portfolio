@@ -166,8 +166,6 @@ function getContainerPosition() {
 // ============================
 
 const executeAnimationCycle = coolDownFn((event) => {
-  let { relativeTop, relativeLeft } = getCursorRelativeCoordinates(event, parentContainerDOM.value)
-
   const { topContainerDOM, bottomContainerDOM } = getContainerPosition()
 
   // Remove move eventlistener
@@ -184,7 +182,7 @@ const executeAnimationCycle = coolDownFn((event) => {
     setContainerStyle({
       containerDOM: topContainerDOM,
       transition: `${SHOW_CLIP_ANIMATION_DURATION}s`,
-      clipPath: `circle(160% at ${relativeTop}px ${relativeLeft}px)`
+      clipPath: `circle(160% at ${event.clientX}px ${event.clientY}px)`
     })
   }, 0)
 
