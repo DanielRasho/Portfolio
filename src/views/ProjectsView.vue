@@ -1,6 +1,6 @@
 <template>
   <section id="projects-section">
-    <div class="line-container">
+    <div class="projects__line-container">
       <svg viewBox="0 0 722 816" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="">
         <path
           id="computer-path"
@@ -11,71 +11,78 @@
         />
       </svg>
     </div>
-    <div class="project-images">
-      <div class="pc-display">
-        <div class="carousel-track">
-          <div id="no-signal-overlay" class="image-item">
-            <img src="../assets/images/noSignalOverlay.webp" alt="hello" />
-          </div>
-          <div class="image-item">
-            <img src="../assets/images/Jlisp.webp" alt="hello" />
-          </div>
-          <div class="image-item">
-            <img src="../assets/images/WireWiz.webp" alt="hello" />
-          </div>
-          <div class="image-item">
-            <img src="../assets/images/BrushWire.webp" alt="hello" />
+    <div class="projects__images">
+      <div class="projects__computer-slideshow">
+        <div class="pc-display">
+          <div class="image-track" :style="itemIndexStyle">
+            <div id="no-signal-overlay" class="image-item">
+              <img src="../assets/images/noSignalOverlay.webp" alt="hello" />
+            </div>
+            <div class="image-item">
+              <img src="../assets/images/Jlisp.webp" alt="hello" />
+            </div>
+            <div class="image-item">
+              <img src="../assets/images/WireWiz.webp" alt="hello" />
+            </div>
+            <div class="image-item">
+              <img src="../assets/images/BrushWire.webp" alt="hello" />
+            </div>
           </div>
         </div>
+        <img class="pc-frame" src="../assets/images/computer.webp" alt="" />
       </div>
-      <img class="pc-frame" src="../assets/images/computer.webp" alt="" />
     </div>
-    <div class="project-info">
-      <div class="track">
-        <div class="project-item">
-          <div class="project-title">Lisp Interpreter</div>
-          <div class="project-description">
-            A small implementation of Lisp on Java supporting many operations, and capable of
-            detecting syntax errors.
-          </div>
-          <ImportantButton
-            text="Link to Code"
-            href="https://github.com/DiegoLinares11/LISP-Project"
-          />
-        </div>
-        <div class="project-item">
-          <div class="project-title">WireWiz</div>
-          <div class="project-description">
-            A simulator for electrons flow through a wire. Made with Vue
-          </div>
-          <ImportantButton text="Link to Code" href="https://github.com/DanielRasho/wireWiz" />
-        </div>
-        <div class="project-item">
-          <div class="project-title">Brush Wire</div>
-          <div class="project-description">
-            A cool blog made for artist to share their knoledge. Made with React.
-          </div>
-          <a class="project-link"><span style="--content: 'Link to Code'">Link to Code</span></a>
-          <ImportantButton text="Link to Code" href="https://github.com/DanielRasho/BrushWire" />
-        </div>
+    <div class="projects__info">
+      <div class="info-track" :style="itemIndexStyle">
+        <ProjectItem
+          title="Lisp Interpreter"
+          description="A small implementation of Lisp on Java supporting many operations, and capable of detecting syntax erros."
+          link="https://github.com/DiegoLinares11/LISP-Project"
+        />
+        <ProjectItem
+          title="Wire Wiz"
+          description="A simulator for electrons flow through a wire. Made with Vue and love"
+          link="https://github.com/DanielRasho/wireWiz"
+        />
+        <ProjectItem
+          title="Brush Wire"
+          description="A cool blog made for artist to share their knoledge. Made with React."
+          link="https://github.com/DanielRasho/BrushWire"
+        />
       </div>
     </div>
   </section>
 </template>
 <script setup>
-import { onMounted } from 'vue'
-import ImportantButton from '../components/ImportantButton/ImportantButton.vue'
+import { computed, onMounted, ref } from 'vue'
+import ProjectItem from '@/components/ProjectItem/ProjectItem.vue'
+import ImportantButton from '@/components/ImportantButton/ImportantButton.vue'
 import { gsap } from 'gsap/gsap-core'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
+// STATE
+const itemIndex = ref(0)
+
+const itemIndexStyle = computed(() => {
+  return `--project-index:${itemIndex.value};`
+})
+
+function getPathLength(SVGelement) {
+  return SVGelement.getTotalLength()
+}
+
+// SVG UTILITY FUNCTION
+function initSVGPath(SVGelement) {
+  let pathLength = getPathLength(SVGelement)
+  SVGelement.style.strokeDasharray = pathLength + ' ' + pathLength
+  SVGelement.style.strokeDashoffset = pathLength
+}
+
+// ANIMATION
 onMounted(() => {
   let computerPath = document.getElementById('computer-path')
-  let computerPathLenght = () => computerPath.getTotalLength()
-  computerPath.style.strokeDasharray = computerPathLenght() + ' ' + computerPathLenght()
-  computerPath.style.strokeDashoffset = computerPathLenght()
+  initSVGPath(computerPath)
 
-  let infoTrack = document.getElementsByClassName('track')[0]
-  let imageTrack = document.getElementsByClassName('carousel-track')[0]
   let overlay = document.getElementById('no-signal-overlay')
 
   ScrollTrigger.create({
@@ -86,8 +93,8 @@ onMounted(() => {
     invalidateOnRefresh: true,
     onUpdate: (self) => {
       let scrollPercentage = self.progress.toFixed(3)
-      var drawLength = computerPathLenght() * scrollPercentage
-      computerPath.style.strokeDashoffset = computerPathLenght() - drawLength
+      var drawLength = getPathLength(computerPath) * scrollPercentage
+      computerPath.style.strokeDashoffset = getPathLength(computerPath) - drawLength
     }
   })
   ScrollTrigger.create({
@@ -100,20 +107,18 @@ onMounted(() => {
     },
     onUpdate: (self) => {
       if (self.progress.toFixed(1) == 0.0) {
-        infoTrack.style = '--project-index:0;'
-        imageTrack.style = '--project-index:0;'
+        itemIndex.value = 0
       } else if (self.progress.toFixed(1) == 0.3) {
-        infoTrack.style = '--project-index:1;'
-        imageTrack.style = '--project-index:1;'
+        itemIndex.value = 1
       } else if (self.progress.toFixed(1) == 0.6) {
-        infoTrack.style = '--project-index:2;'
-        imageTrack.style = '--project-index:2;'
+        itemIndex.value = 2
       }
     }
   })
 })
 </script>
 <style>
+/* SECTION STYLE */
 #projects-section {
   height: 100vh;
   width: 100vw;
@@ -123,7 +128,15 @@ onMounted(() => {
   position: relative;
 }
 
-#projects-section .line-container {
+.projects__images,
+.projects__info {
+  position: relative;
+  z-index: 1000;
+  width: 50%;
+}
+
+/* SVG LINE DRW STYLE */
+.projects__line-container {
   width: 100%;
   height: 100%;
   text-align: center;
@@ -131,56 +144,61 @@ onMounted(() => {
   z-index: 100;
 }
 
-#projects-section svg {
+.projects__line-container svg {
   display: inline-block;
   height: 70%;
   z-index: 100;
   transform: translateX(16%);
 }
 
-#projects-section .project-images,
-#projects-section .project-info {
-  position: relative;
-  z-index: 1000;
-  width: 50%;
-}
-
-#projects-section .project-images {
+/* IMAGE CARROSEL STYLE */
+.projects__images {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
 
-#projects-section .project-images .pc-frame {
+.projects__computer-slideshow {
+  position: relative;
   width: 75%;
-  object-fit: contain;
-  z-index: 1000;
 }
 
-#projects-section .pc-display {
-  top: 20%;
-  width: 48%;
-  height: 33%;
+.projects__images .pc-frame {
+  position: relative; /* Neccesary for frame be over slideshow */
+  width: 100%;
+  height: fit-content;
+  object-fit: contain;
+  z-index: 800;
+}
+
+.projects__images .pc-display {
+  position: absolute;
+  /** This measures come from calculating the proportions
+  of the screen with respect to the pc frame */
+  width: 62%;
+  height: 42%;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
 
   z-index: 100;
   overflow: hidden;
-  position: absolute;
 }
 
-#projects-section .carousel-track {
+#projects-section .image-track {
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
-  transition: transform cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
-  --project-index: 0;
-  transform: translateX(calc(var(--project-index) * -100%));
+  transition: transform cubic-bezier(0.165, 0.84, 0.44, 1) 1s;
+  transform: translateY(calc(var(--project-index, 0) * -100%));
 }
-.carousel-track .image-item {
+.image-track .image-item {
   min-width: 100%;
   min-height: 100%;
 }
-.carousel-track .image-item img {
+.image-track .image-item img {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -189,92 +207,44 @@ onMounted(() => {
   position: absolute;
 }
 
-#projects-section .project-info {
+/* INFO STYLE */
+.projects__info {
   padding-top: 5rem;
   overflow: hidden;
 }
 
-#projects-section .project-info .track {
+.projects__info .info-track {
   display: flex;
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
+  transition: transform cubic-bezier(0.165, 0.84, 0.44, 1) 1s;
 
-  --project-index: 0;
-  transform: translateX(calc(var(--project-index) * -100%));
-}
-
-#projects-section .project-item {
-  min-width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
-  display: flex;
-  flex-direction: column;
+  transform: translateX(calc(var(--project-index, 0) * -100%));
 }
 
-#projects-section .project-info * {
-  color: var(--white);
-}
-
-#projects-section .project-title {
-  font-size: 4rem;
-  font-family: 'Avigea';
-}
-
-#projects-section .project-description {
-  font-size: 1.4rem;
-  margin-top: 2rem;
-}
-@media only screen and (max-width: 1550px) {
-  #projects-section .pc-display {
-    top: 25%;
-    height: 28%;
-  }
-}
-@media only screen and (max-width: 1310px) {
-  #projects-section .pc-display {
-    top: 30%;
-    height: 25%;
-  }
-}
+/* MEDIA QUERIES */
 @media only screen and (max-width: 1040px) {
   #projects-section {
-    display: block;
+    flex-direction: column;
+    padding-top: 0;
   }
   #projects-section svg {
     display: none;
   }
-  #projects-section .project-images,
-  #projects-section .project-info {
-    width: 70%;
-    margin-left: 15%;
-    margin-right: 15%;
+  #projects-section .projects__images,
+  #projects-section .projects__info {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  #projects-section .pc-display {
-    top: 22%;
-    width: 48%;
-    height: 40%;
-  }
-  #projects-section .project-title {
-    font-size: 3rem;
+  .projects__info {
+    padding-top: 2rem;
   }
 
-  #projects-section .project-description {
-    font-size: 1.2rem;
-    margin-top: 2rem;
-  }
-  #projects-section .project-images {
-    padding-top: 5rem;
-  }
-}
-
-@media only screen and (max-width: 700px) {
-  #projects-section .pc-display {
-    top: 28%;
-    width: 48%;
-    height: 40%;
+  #projects-section .projects__images {
+    padding-top: 2rem;
   }
 }
 </style>
