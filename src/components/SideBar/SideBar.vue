@@ -82,4 +82,10 @@ nav a span::before {
   right: 0;
   transform: translateY(-200%);
 }
+
+@media only screen and (max-width: 650px) {
+  nav {
+    display: none;
+  }
+}
 </style>
