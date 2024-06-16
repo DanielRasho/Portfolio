@@ -270,7 +270,7 @@ const moveClipAnimation = coolDownFn((event) => {
 
 #home__container-B {
   z-index: 20;
-  clip-path: circle(10% at 0 0);
+  clip-path: circle(10% at 50% 50%);
 }
 
 @media only screen and (max-width: 1020px) {
