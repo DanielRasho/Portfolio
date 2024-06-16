@@ -75,4 +75,10 @@
   bottom: -50%;
   left: 40%;
 }
+
+@media only screen and (max-width: 850px) {
+  .cat {
+    display: none;
+  }
+}
 </style>
