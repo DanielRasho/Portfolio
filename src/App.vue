@@ -7,6 +7,7 @@ import AbstractView from './views/AbstractView.vue'
 import ExperienceView from './views/ExperienceView.vue'
 import ProjectsView from './views/ProjectsView.vue'
 import KnowledgeView from './views/KnowledgeView.vue'
+import SectionIndicator from './components/SectionIndicator.vue'
 
 const navLinks = [
   {
@@ -23,29 +24,48 @@ const navLinks = [
   }
 ]
 
-onMounted(() => {
-  let emptyPath = document.getElementById('empty-path')
-  let emptyPathLength = () => emptyPath.getTotalLength()
-  emptyPath.style.strokeDasharray = emptyPathLength() + ' ' + emptyPathLength()
-  emptyPath.style.strokeDashoffset = emptyPathLength()
-
-  ScrollTrigger.create({
-    trigger: '#experience-section',
-    start: '30% bottom',
-    end: 'bottom 80%',
-    //pin: true,
-    scrub: true,
-    invalidateOnRefresh: true,
-    onUpdate: (self) => {
-      let scrollPercentage = self.progress.toFixed(3)
-      var drawLength = emptyPathLength() * scrollPercentage
-      emptyPath.style.strokeDashoffset = emptyPathLength() - drawLength
-    }
-  })
-})
+const sectionHeaders = [
+  {
+    id: '#home-section',
+    text: '‎ ',
+    theme: 'dark',
+    start: 'top+=1px top'
+  },
+  {
+    id: '#abstract-section',
+    text: 'Abstract',
+    theme: 'dark'
+  },
+  {
+    id: '#experience-section',
+    text: 'Experience',
+    theme: 'dark'
+  },
+  {
+    id: '#projects-section',
+    text: 'Projects',
+    theme: 'light',
+    start: 'top-=10px top',
+    end: 'bottom+=201% bottom'
+  },
+  {
+    id: '#knowledge-section',
+    text: 'Knowledge',
+    theme: 'dark',
+    start: 'top+=200% top',
+    end: 'bottom+=200% bottom'
+  },
+  {
+    id: '#contacts-section',
+    text: '‎ ',
+    theme: 'dark',
+    start: 'top+=600% 50%'
+  }
+]
 </script>
 
 <template>
+  <SectionIndicator :sections="sectionHeaders" />
   <SideBar :links="navLinks" />
   <HomeView />
   <AbstractView />
@@ -64,10 +84,10 @@ onMounted(() => {
         ><span>Linkedln </span><i class="fa-solid fa-paperclip"></i
       ></a>
       <a href="mailto: drayoroldan@gmail.com" target="_blank"
-        ><span>Mail</span><i class="fa-solid fa-paperclip"></i
+        ><span>Mail </span><i class="fa-solid fa-paperclip"></i
       ></a>
       <a href="https://github.com/DanielRasho" target="_blank"
-        ><span>Github</span> <i class="fa-solid fa-paperclip"></i
+        ><span>Github </span> <i class="fa-solid fa-paperclip"></i
       ></a>
     </div>
   </footer>
