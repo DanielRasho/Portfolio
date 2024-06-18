@@ -247,14 +247,4 @@ onMounted(() => {
     padding-top: 2rem;
   }
 }
-@media only screen and (max-height: 860px) and (max-width: 1040px) {
-  .projects__computer-slideshow {
-    width: 60%;
-  }
-}
-@media only screen and (max-height: 700px) and (max-width: 1040px) {
-  .projects__computer-slideshow {
-    width: 40%;
-  }
-}
 </style>
