@@ -1,5 +1,5 @@
 <template>
-  <section id="home-hero" @click="executeAnimationCycle">
+  <section id="home-section" @click="executeAnimationCycle">
     <HomeContainer class="home__container--base" theme="LIGHT" :img-path="coverHuman" />
     <!-- 
       THIS ARE THE LAYERS FOR THE HOLE TRANSITION EFFECT 
@@ -91,7 +91,7 @@ const containerBModel = ref({
 })
 
 onMounted(() => {
-  let parentContainer = document.getElementById('home-hero')
+  let parentContainer = document.getElementById('home-section')
   let containerA = document.getElementById('home__container-A')
   let containerB = document.getElementById('home__container-B')
 
@@ -238,7 +238,7 @@ const moveClipAnimation = coolDownFn((event) => {
 </script>
 
 <style scoped>
-#home-hero {
+#home-section {
   width: 100vw;
   min-height: 100vh;
   position: relative;
