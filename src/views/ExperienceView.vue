@@ -28,7 +28,32 @@
     </div>
   </section>
 </template>
-<script setup></script>
+<script setup>
+import { onMounted } from 'vue'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+onMounted(() => {
+  let emptyPath = document.getElementById('empty-path')
+  let emptyPathLength = () => emptyPath.getTotalLength()
+  emptyPath.style.strokeDasharray = emptyPathLength() + ' ' + emptyPathLength()
+  emptyPath.style.strokeDashoffset = emptyPathLength()
+
+  ScrollTrigger.create({
+    trigger: '#experience-section',
+    start: '30% bottom',
+    end: 'bottom 80%',
+    //pin: true,
+    scrub: true,
+    invalidateOnRefresh: true,
+    onUpdate: (self) => {
+      let scrollPercentage = self.progress.toFixed(3)
+      var drawLength = emptyPathLength() * scrollPercentage
+      emptyPath.style.strokeDashoffset = emptyPathLength() - drawLength
+    }
+  })
+})
+</script>
 <style scoped>
 #experience-section {
   height: 100vh;
@@ -50,6 +75,7 @@
 #experience-section svg {
   display: inline-block;
   height: 100%;
+  transform: translateX(2%);
 }
 
 .cat {
