@@ -148,7 +148,7 @@ onMounted(() => {
   display: inline-block;
   height: 70%;
   z-index: 100;
-  transform: translateX(16%);
+  transform: translateX(17%);
 }
 
 /* IMAGE CARROSEL STYLE */
