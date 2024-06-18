@@ -30,7 +30,6 @@ onMounted(() => {
     ScrollTrigger.create({
       start: section.start ? section.start : 'top+=1px top',
       end: section.end ? section.end : 'bottom-=10px bottom',
-      markers: true,
       trigger: section.id,
       invalidateOnRefresh: true,
       onEnter: () => {
