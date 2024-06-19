@@ -1,7 +1,7 @@
 <template>
   <section id="abstract-section">
-    <div class="abstract-left">
-      <div class="img-container">
+    <div class="abstract-section__left">
+      <div id="abstract-left-img" class="img-container">
         <img src="../assets/images/sideHuman.webp" alt="My dev side" />
       </div>
       <div class="dev-title">DEV</div>
@@ -12,8 +12,8 @@
         </div>
       </div>
     </div>
-    <div class="abstract-right">
-      <div class="img-container">
+    <div class="abstract-section__right">
+      <div id="abstract-right-img" class="img-container">
         <img src="../assets/images/sideRobot.webp" alt="My design side" />
       </div>
       <div class="design-title">DESIGN</div>
@@ -26,7 +26,33 @@
     </div>
   </section>
 </template>
-<script setup></script>
+<script setup>
+import { onMounted } from 'vue'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+onMounted(() => {
+  const leftImgContainer = document.getElementById('abstract-left-img')
+  const rightImgContainer = document.getElementById('abstract-right-img')
+  leftImgContainer.style = '--hide: 100%;'
+  rightImgContainer.style = '--hide: -100%;'
+
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#abstract-section',
+      start: 'top+=1px top',
+      end: 'bottom-=10px bottom',
+      invalidateOnRefresh: true,
+      once: true,
+      scrub: false,
+      onEnter: (self) => {
+        leftImgContainer.style = ''
+        rightImgContainer.style = ''
+      }
+    }
+  })
+})
+</script>
 <style scoped>
 #abstract-section {
   overflow: hidden;
@@ -35,8 +61,8 @@
   display: flex;
 }
 
-#abstract-section .abstract-left,
-#abstract-section .abstract-right {
+.abstract-section__left,
+.abstract-section__right {
   overflow: hidden;
   position: relative;
   width: 50%;
@@ -44,7 +70,7 @@
   align-items: end;
 }
 
-#abstract-section .abstract-left {
+.abstract-section__left {
   justify-content: right;
 }
 
@@ -59,16 +85,16 @@
   object-fit: contain;
 }
 
-#abstract-section .abstract-right .img-container {
-  transform: translate(-35%);
+.abstract-section__right .img-container {
+  transform: translateX(var(--hide, -35%));
 }
-#abstract-section .abstract-left .img-container {
-  transform: translate(25%);
+.abstract-section__left .img-container {
+  transform: translateX(var(--hide, 25%));
 }
-#abstract-section .abstract-left .img-container:hover {
+.abstract-section__left .img-container:hover {
   transform: translate(10%);
 }
-#abstract-section .abstract-right .img-container:hover {
+.abstract-section__right .img-container:hover {
   transform: translate(-20%);
 }
 
@@ -120,13 +146,9 @@
   }
 }
 @media only screen and (max-width: 1460px) {
-  #abstract-section .abstract-left,
-  #abstract-section .abstract-right {
-    overflow: hidden;
-    position: relative;
+  .abstract-section__left,
+  .abstract-section__right {
     width: 100%;
-    display: flex;
-    align-items: end;
   }
   #abstract-section .dev-title,
   #abstract-section .design-title {
@@ -138,15 +160,14 @@
   }
 }
 @media only screen and (max-width: 900px) {
-  #abstract-section .abstract-left,
-  #abstract-section .abstract-right {
+  .abstract-section__left,
+  .abstract-section__right {
     position: relative;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: visible;
   }
   #abstract-section .dev-title,
   #abstract-section .design-title {
@@ -162,20 +183,18 @@
     transform: rotateZ(-90deg) translateY(50%);
     right: 20%;
   }
-  #abstract-section .abstract-left .img-container,
-  #abstract-section .abstract-right .img-container {
+  .abstract-section__left .img-container,
+  .abstract-section__right .img-container {
     transform: translate(50%);
     width: 65%;
-    height: auto;
+    height: fit-content;
     overflow: visible;
   }
-  #abstract-section .abstract-right .img-container {
+  .abstract-section__right .img-container {
     transform: translate(-50%);
-    width: 65%;
-    height: auto;
   }
-  #abstract-section .abstract-left .img-container img,
-  #abstract-section .abstract-right .img-container img {
+  #abstract-section .abstract-section__left .img-container img,
+  #abstract-section .abstract-section__right .img-container img {
     width: 100%;
   }
 
@@ -189,10 +208,10 @@
     margin: 5rem 20%;
   }
 
-  #abstract-section .abstract-left .img-container:hover {
+  #abstract-section .abstract-section__left .img-container:hover {
     transform: translate(50%);
   }
-  #abstract-section .abstract-right .img-container:hover {
+  #abstract-section .abstract-section__right .img-container:hover {
     transform: translate(-50%);
   }
 }
