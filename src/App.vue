@@ -58,7 +58,7 @@ const sectionHeaders = [
     id: '#contacts-section',
     text: 'Contacts',
     theme: 'dark',
-    start: 'top+=200% top',
+    start: 'top+=200%+1px top',
     end: 'bottom+=200% bottom'
   }
 ]
