@@ -55,12 +55,11 @@ const homeContainers = [
     theme: 'DARK'
   },
   {
-    imgPath: 'https://s1.zerochan.net/Shenhe.600.4133369.jpg',
+    imgPath: coverHuman,
     theme: 'LIGHT'
   },
   {
-    imgPath:
-      'https://slm-assets.secondlife.com/assets/26869682/view_large/me%20la%20pelan.jpg?1594932106',
+    imgPath: coverRobot,
     theme: 'DARK'
   }
 ]
