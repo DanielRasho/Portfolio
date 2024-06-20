@@ -1,58 +1,79 @@
 <template>
   <section id="knowledge-section">
-    <PCWindow title="Programming" container="#knowledge-section" :images="programming" />
-    <PCWindow title="Web" container="#knowledge-section" :images="web" />
+    <div class="files-container">
+      <PCIcon
+        v-for="(item, index) in icons"
+        :key="index"
+        :text="item.text"
+        :icon="item.icon"
+        @click="handleOpenWindow(event, index)"
+      />
+    </div>
     <PCWindow
-      title="Graphic Arts"
-      container="#knowledge-section"
-      :images="graphicDesign"
-    ></PCWindow>
-    <PCWindow title="???" container="#knowledge-section" :images="extra"></PCWindow>
+      :title="currentWindowContent.title"
+      :images="currentWindowContent.images"
+      :open="isWindowOpen"
+      @close-window="handleCloseWindow"
+    />
   </section>
 </template>
 <script setup>
-import Draggable from 'gsap/Draggable'
 import PCWindow from '@/components/PCWindow.vue'
-import { onMounted } from 'vue'
+import PCIcon from '@/components/PCIcon.vue'
+import { icons, windows } from '@/assets/json/KnowledgeInfo'
+import { computed, ref } from 'vue'
 
-const programming = [
-  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg'
-]
+const isWindowOpen = ref(false)
 
-const web = [
-  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original-wordmark.svg'
-]
+const currentWindowIndex = ref(0)
 
-const graphicDesign = [
-  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/inkscape/inkscape-original-wordmark.svg',
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvO49NOm3hyGGdNAH3aa7Vfmxx0qKHFeHTlQ&s',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg',
-  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blender/blender-original-wordmark.svg',
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Clip_studio_file_logo_SVG.svg/2560px-Clip_studio_file_logo_SVG.svg.png',
-  'https://w7.pngwing.com/pngs/268/324/png-transparent-blackmagic-davinci-resolve-logo-brand-font-blackmagic-design-davinci-resolve-14-logo-computer-logo-computer-wallpaper-thumbnail.png'
-]
+const currentWindowContent = computed(() => {
+  let newIndex = currentWindowIndex.value
+  return { ...windows[newIndex] }
+})
 
-const extra = [
-  'https://repository-images.githubusercontent.com/458803330/fd027c0e-dcbb-4127-8670-7dd92566b808'
-]
+function handleOpenWindow(event, index) {
+  currentWindowIndex.value = index
+  isWindowOpen.value = true
+}
 
-onMounted(() => {})
+function handleCloseWindow() {
+  isWindowOpen.value = false
+}
 </script>
-<style>
+<style scoped>
 #knowledge-section {
+  position: relative;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
   background-color: var(--white);
+  border-bottom: 1px solid var(--dark-green);
+  padding-left: 8rem;
+  padding-right: 8rem;
+  padding-top: 8rem;
+}
+.files-container {
+  width: fit-content;
+  height: 80%;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
   flex-wrap: wrap;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 900px) {
+  #knowledge-section {
+    padding: 5;
+  }
+  .files-container {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+@media only screen and (max-width: 450px) {
+  #knowledge-section {
+    padding: 3rem;
+  }
 }
 </style>
