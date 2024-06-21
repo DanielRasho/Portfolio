@@ -83,7 +83,7 @@ onMounted(() => {
 
 .contacts-section__tv {
   height: auto;
-  max-width: 400px;
+  max-width: 350px;
   position: relative;
   margin: 0 3rem 0 3rem;
 }

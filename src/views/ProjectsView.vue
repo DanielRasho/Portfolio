@@ -25,7 +25,7 @@
               <img src="../assets/images/WireWiz.webp" alt="hello" />
             </div>
             <div class="image-item">
-              <img src="../assets/images/BrushWire.webp" alt="hello" />
+              <img src="../assets/images/Chessy.webp" alt="hello" />
             </div>
           </div>
         </div>
@@ -45,9 +45,9 @@
           link="https://github.com/DanielRasho/wireWiz"
         />
         <ProjectItem
-          title="Brush Wire"
-          description="A cool blog made for artist to share their knoledge. Made with React."
-          link="https://github.com/DanielRasho/BrushWire"
+          title="Chessy"
+          description="An chess online of cute ghosts! I made the designs and frontend."
+          link="https://github.com/ElrohirGT/Chessy"
         />
       </div>
     </div>
@@ -205,6 +205,7 @@ onMounted(() => {
 }
 #no-signal-overlay {
   position: absolute;
+  height: 100%;
 }
 
 /* INFO STYLE */
