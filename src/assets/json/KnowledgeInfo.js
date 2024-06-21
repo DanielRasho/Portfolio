@@ -1,22 +1,27 @@
+import webIcon from '@/assets/images/web.webp'
+import dontOpenIcon from '@/assets/images/dontOpen.webp'
+import artDesignIcon from '@/assets/images/artDesign.webp'
+import programminIcon from '@/assets/images/programming.webp'
+
 const icons = [
   {
     text: 'Programming.exe',
-    icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgOD0abk6GHTIRcOLItB1UnxDP8NtyACkMCA&s',
+    icon: programminIcon,
     index: 0
   },
   {
     text: 'Web.js',
-    icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgOD0abk6GHTIRcOLItB1UnxDP8NtyACkMCA&s',
+    icon: webIcon,
     index: 1
   },
   {
     text: 'Graphic Design.png',
-    icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgOD0abk6GHTIRcOLItB1UnxDP8NtyACkMCA&s',
+    icon: artDesignIcon,
     index: 2
   },
   {
     text: 'DONT_OPEN.bat',
-    icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgOD0abk6GHTIRcOLItB1UnxDP8NtyACkMCA&s',
+    icon: dontOpenIcon,
     index: 3
   }
 ]
@@ -94,7 +99,7 @@ const windows = [
     ]
   },
   {
-    title: '?',
+    title: '🅱🆃🆆',
     images: [
       {
         url: 'https://repository-images.githubusercontent.com/458803330/fd027c0e-dcbb-4127-8670-7dd92566b808',
